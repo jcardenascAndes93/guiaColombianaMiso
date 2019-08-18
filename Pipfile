@@ -10,6 +10,7 @@ django = "==2.1.0"
 django-heroku = "*"
 psycopg2 = "*"
 gunicorn = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.7"
