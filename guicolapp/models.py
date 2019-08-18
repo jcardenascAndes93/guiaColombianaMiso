@@ -5,7 +5,7 @@ from django.db import models
 # Modelo City
 class City(models.Model):
     name = models.CharField(max_length=30)
-    code = models.CharField(max_length=30)
+    code = models.CharField(max_length=5)
 
     def __str__(self):
         return self.name
@@ -41,8 +41,8 @@ class Tourist(models.Model):
 
 # Model Place
 class Place(models.Model):
-    name = models.CharField(max_length=30)
-    description = models.CharField(max_length=30)
+    name = models.CharField(max_length=50)
+    description = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
@@ -59,7 +59,7 @@ class Category(models.Model):
 # Model Tour
 class Tour(models.Model):
 
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=50)
     map = models.ImageField(upload_to='staticfiles/images', null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     guia = models.ForeignKey(Guia, on_delete=models.CASCADE)
