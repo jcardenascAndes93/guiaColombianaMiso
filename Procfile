@@ -1,1 +1,1 @@
-web: gunicorn guia_col_project.wsgi --log-file
+web: gunicorn guia_col_project.wsgi --log-file -
