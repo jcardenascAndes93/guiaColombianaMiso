@@ -109,3 +109,6 @@ media/
 
 # static files
 staticfiles/*
+
+# .idea
+.idea/*
