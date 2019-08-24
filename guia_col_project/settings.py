@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'guia_col',
         'USER': 'postgres',
-        'PASSWORD': 'jc1095jc',
+        'PASSWORD': 'sa',
         'HOST': 'localhost',
         'PORT': '',
     }
@@ -123,3 +123,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_URL = '/images/'
+STATIC_ROOT = 'staticfiles'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'images'),
+)
