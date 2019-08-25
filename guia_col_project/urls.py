@@ -20,7 +20,7 @@ from django.urls import path
 from guicolapp import views
 
 urlpatterns = [
-    url(r'^$', views.index, name='home'),
+    url(r'^$', views.guias, name='home'),
     path('accounts/', include('accounts.urls')),
     path('admin/', admin.site.urls),
     url(r'^guicolapp/', include('guicolapp.urls')),
