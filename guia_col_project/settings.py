@@ -26,7 +26,7 @@ SECRET_KEY = 'whs0t0@uhqm0(%jsh5dl0k4cxgk187+y_xuq-je@yjjrk1dk@t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['guia-colombiana.herokuapp.com']
+ALLOWED_HOSTS = ['guia-colombiana.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'guia_col_project.urls'
@@ -80,13 +81,22 @@ WSGI_APPLICATION = 'guia_col_project.wsgi.application'
 
 DATABASES = {
 
+    #'default': {
+    #    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #    'NAME': 'd5vr58j8avu9nh',
+    #    'USER': 'hokfuwhtonqbhh',
+    #    'PASSWORD': '99c3068c48775d963158e0eaa87fcfed14ac62a846b8b9e6181e0a714c53e313',
+    #    'HOST': 'ec2-54-83-192-245.compute-1.amazonaws.com',
+    #    'PORT': '5432',
+    #}
+
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd5vr58j8avu9nh',
-        'USER': 'hokfuwhtonqbhh',
-        'PASSWORD': '99c3068c48775d963158e0eaa87fcfed14ac62a846b8b9e6181e0a714c53e313',
-        'HOST': 'ec2-54-83-192-245.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'NAME': 'guia_col',
+        'USER': 'postgres',
+        'PASSWORD': 'jc1095jc',
+        'HOST': 'localhost',
+        'PORT': '',
     }
     
 }
@@ -133,6 +143,8 @@ STATIC_ROOT = 'staticfiles'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'images'),
 )
+
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Activate Django-Heroku.
 #django_heroku.settings(locals())
