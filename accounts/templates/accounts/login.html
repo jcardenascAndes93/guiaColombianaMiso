@@ -1,0 +1,29 @@
+{% block content %}
+<div style="text-align:center" class="col-md-9 mx-auto mb-5 mt-xl-5">
+  <h2>Iniciar Sesión</h2>
+</div>
+
+{% if form.errors %}
+<p style="color: red">Your username and password didn't match. Please try again.</p>
+{% endif %}
+<div style="text-align:center">
+  <form class="site-form" action="{% url 'accounts:login' %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}" />
+    {% for field in form %}
+    <p>
+      {{ field.label_tag }}<br>
+      {{ field }}<br>
+      {% for error in field.errors %}
+      <p style="color: red">{{ error }}</p>
+      {% endfor %}
+      {% if field.help_text %}
+      <p><small style="color: grey">{{ field.help_text }}</small></p>
+      {% endif %}
+    </p>
+    {% endfor %}
+    <button type="submit">Login</button>
+  </form>
+</div>
+
+{% endblock %}
