@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -78,13 +79,22 @@ WSGI_APPLICATION = 'guia_col_project.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
+
+    #'default': {
+    #    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #    'NAME': os.environ.get('DB_NAME', ''),
+    #    'USER': os.environ.get('DB_USER', ''),
+    #    'PASSWORD': os.environ.get('DB_PASSWORD', ''),
+    #    'HOST': os.environ.get('DB_HOSTNAME', ''),
+    #    'PORT': os.environ.get('DB_PORT', ''),
+    #}
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DB_NAME', ''),
-        'USER': os.environ.get('DB_USER', ''),
-        'PASSWORD': os.environ.get('DB_PASSWORD', ''),
-        'HOST': os.environ.get('DB_HOSTNAME', ''),
-        'PORT': os.environ.get('DB_PORT', ''),
+        'NAME': 'guia_col',
+        'USER': 'postgres',
+        'PASSWORD': 'jc1095jc',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -132,4 +142,4 @@ STATICFILES_DIRS = (
 )
 
 # Activate Django-Heroku.
-django_heroku.settings(locals())
+#django_heroku.settings(locals())
