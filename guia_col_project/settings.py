@@ -81,24 +81,16 @@ WSGI_APPLICATION = 'guia_col_project.wsgi.application'
 
 DATABASES = {
 
-    #'default': {
-    #    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #    'NAME': 'd5vr58j8avu9nh',
-    #    'USER': 'hokfuwhtonqbhh',
-    #    'PASSWORD': '99c3068c48775d963158e0eaa87fcfed14ac62a846b8b9e6181e0a714c53e313',
-    #    'HOST': 'ec2-54-83-192-245.compute-1.amazonaws.com',
-    #    'PORT': '5432',
-    #}
-
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'guia_col',
-        'USER': 'postgres',
-        'PASSWORD': 'jc1095jc',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': 'd5vr58j8avu9nh',
+        'USER': 'hokfuwhtonqbhh',
+        'PASSWORD': '99c3068c48775d963158e0eaa87fcfed14ac62a846b8b9e6181e0a714c53e313',
+        'HOST': 'ec2-54-83-192-245.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
-    
+
+
 }
 
 # Password validation
@@ -147,4 +139,4 @@ STATICFILES_DIRS = (
 #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Activate Django-Heroku.
-#django_heroku.settings(locals())
+# django_heroku.settings(locals())
