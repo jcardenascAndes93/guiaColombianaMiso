@@ -3,11 +3,9 @@ from django.db import models
 # Create your models here.
 
 # Modelo City
-
-
 class City(models.Model):
     name = models.CharField(max_length=30)
-    code = models.CharField(max_length=5)
+    code = models.CharField(max_length=30)
 
     def __str__(self):
         return self.name
@@ -18,7 +16,8 @@ class Guia(models.Model):
     full_name = models.CharField(max_length=50)
     frase = models.CharField(max_length=150)
     email = models.EmailField()
-    photo = models.ImageField(upload_to='staticfiles/images', null=True)
+    #photo = models.ImageField(upload_to='images/guia', null=True)
+    photo = models.ImageField(upload_to='images/guia', null=True)
     facebook = models.CharField(max_length=50)
     twitter = models.CharField(max_length=50)
     instagram = models.CharField(max_length=50)
@@ -43,8 +42,8 @@ class Tourist(models.Model):
 
 # Model Place
 class Place(models.Model):
-    name = models.CharField(max_length=50)
-    description = models.CharField(max_length=100)
+    name = models.CharField(max_length=30)
+    description = models.CharField(max_length=30)
 
     def __str__(self):
         return self.name
@@ -61,8 +60,9 @@ class Category(models.Model):
 # Model Tour
 class Tour(models.Model):
 
-    name = models.CharField(max_length=50)
-    map = models.ImageField(upload_to='staticfiles/images', null=True)
+    name = models.CharField(max_length=30)
+    #map = models.ImageField(upload_to='images/tour', null=True)
+    map = models.ImageField(upload_to='images/tour', null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     guia = models.ForeignKey(Guia, on_delete=models.CASCADE)
     categories = models.ManyToManyField(Category)
