@@ -26,7 +26,7 @@ SECRET_KEY = 'whs0t0@uhqm0(%jsh5dl0k4cxgk187+y_xuq-je@yjjrk1dk@t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['guia-colombiana.herokuapp.com']
 
 
 # Application definition
@@ -80,22 +80,15 @@ WSGI_APPLICATION = 'guia_col_project.wsgi.application'
 
 DATABASES = {
 
-    #'default': {
-    #    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #    'NAME': os.environ.get('DB_NAME', ''),
-    #    'USER': os.environ.get('DB_USER', ''),
-    #    'PASSWORD': os.environ.get('DB_PASSWORD', ''),
-    #    'HOST': os.environ.get('DB_HOSTNAME', ''),
-    #    'PORT': os.environ.get('DB_PORT', ''),
-    #}
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'guia_col',
-        'USER': 'postgres',
-        'PASSWORD': 'jc1095jc',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': os.environ.get('DB_NAME', ''),
+        'USER': os.environ.get('DB_USER', ''),
+        'PASSWORD': os.environ.get('DB_PASSWORD', ''),
+        'HOST': os.environ.get('DB_HOSTNAME', ''),
+        'PORT': os.environ.get('DB_PORT', ''),
     }
+    
 }
 
 # Password validation
