@@ -4,5 +4,6 @@ from . import views
 
 urlpatterns = [
 
-    url(r'^guias', views.guias, name='addImage'),
+    url(r'^guias', views.guias, name='verGuias'),
+    url(r'^detalleGuias', views.detalleGuias, name='detalleGuias')
 ]

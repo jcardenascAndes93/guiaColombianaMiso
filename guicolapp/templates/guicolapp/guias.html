@@ -1,5 +1,5 @@
 <html lang="en"><head>
-    <title>Fotograp — Colorlib Website Template</title>
+    <title>Mi Guia Colombiana</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -87,65 +87,17 @@
           </div>
           <div class="col-10 col-md-8 d-none d-xl-block">
             <nav class="site-navigation position-relative text-right text-lg-center" role="navigation">
-
               <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
-                <li class="active"><a href="index.html">Home</a></li>
-                <li class="has-children">
-                  <a href="single.html">test</a>
-                  <ul class="dropdown">
-                    <li><a href="#">Nature</a></li>
-                    <li><a href="#">Portrait</a></li>
-                    <li><a href="#">Wedding</a></li>
-                    <li class="has-children">
-                      <a href="#">Sub Menu</a>
-                      <ul class="dropdown">
-                        <li><a href="#">Menu One</a></li>
-                        <li><a href="#">Menu Two</a></li>
-                        <li><a href="#">Menu Three</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="http://localhost:8000/guicolapp/detalleGuias/">Login</a></li>/
+                <li><a href="http://localhost:8000/guicolapp/detalleGuias/">Registro</a></li>
               </ul>
             </nav>
-          </div>
-
-          <div class="col-6 col-xl-2 text-right">
-            <div class="d-none d-xl-inline-block">
-              <ul class="site-menu js-clone-nav ml-auto list-unstyled d-flex text-right mb-0" data-class="social">
-                <li>
-                  <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-                </li>
-                <li>
-                  <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
-                </li>
-                <li>
-                  <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-                </li>
-                <li>
-                  <a href="#" class="pl-3 pr-3"><span class="icon-youtube-play"></span></a>
-                </li>
-              </ul>
-            </div>
-
-            <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
-
           </div>
 
         </div>
       </div>
 
     </header>
-
-
-
-
-
-
-
 
 
     <div class="site-section border-bottom">
@@ -159,19 +111,24 @@
         <div class="row">
              {% for guias in guias %}
           <div class="col-md-6 col-lg-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="400">
-            <a class="image-gradient" href="single.html">
+            <a class="image-gradient" href="#!" onclick="event.preventDefault();document.getElementById('formImage' +
+             '').submit();" >
               <figure>
                 <img src="../../../{{guias.photo}}" alt="" class="img-fluid">
               </figure>
               <div class="text">
                 <h3>{{guias.full_name}}</h3>
+                  	<form method="post" id="formImage" action="http://localhost:8000/guicolapp/detalleGuias/" enctype="multipart/form-data">
+                        <input id="name" name="name" type="hidden" value="{{guias.frase}}">
+                    </form>
                 <span>{{guias.frase}}</span>
               </div>
             </a>
           </div>
             {% endfor %}
-
         </div>
+
+
       </div>
     </div>
 
