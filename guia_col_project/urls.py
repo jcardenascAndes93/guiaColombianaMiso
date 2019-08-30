@@ -21,7 +21,8 @@ from guicolapp import views
 
 urlpatterns = [
     url(r'^$', views.guias, name='home'),
-    path('accounts/', include('accounts.urls')),
+    path('accounts/', include(
+        'accounts.urls', namespace='accounts')),
     path('admin/', admin.site.urls),
     url(r'^guicolapp/', include('guicolapp.urls')),
 ]

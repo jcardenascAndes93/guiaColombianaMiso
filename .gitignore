@@ -114,4 +114,4 @@ staticfiles/*
 .idea/*
 
 # .images
-.images/guia/*
+images/guia/*
