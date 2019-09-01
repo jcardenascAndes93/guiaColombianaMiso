@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'guicolapp',
     'accounts',
     'rest_framework',
+    'rest_framework.authtoken',
     'phone_field',
 
 ]

@@ -6,10 +6,11 @@ from phone_field import PhoneField
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     first_name = serializers.CharField(
-        source='profile.first_name', allow_blank=True)
+        source='profile.first_name', allow_blank=True, required=False)
     last_name = serializers.CharField(
-        source='profile.last_name', allow_blank=True)
-    phone = serializers.CharField(source='profile.phone', allow_blank=True)
+        source='profile.last_name', allow_blank=True, required=False)
+    phone = serializers.CharField(
+        source='profile.phone', allow_blank=True, required=False)
 
     class Meta:
         model = User
