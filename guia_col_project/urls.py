@@ -24,5 +24,6 @@ urlpatterns = [
     path('accounts/', include(
         'accounts.urls', namespace='accounts')),
     path('admin/', admin.site.urls),
-    url(r'^guicolapp/', include('guicolapp.urls')),
+    path('api/', include('guicolapp.urls')),
+    
 ]

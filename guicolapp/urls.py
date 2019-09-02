@@ -1,10 +1,11 @@
+from django.urls import path
 from django.conf.urls import url
-
+from .views import TourView
 from . import views
 
 urlpatterns = [
 
     url(r'^guias', views.guias, name='verGuias'),
-    url(r'^detalleGuias', views.detalleGuias, name='detalleGuias')
+    url(r'^detalleGuias', views.detalleGuias, name='detalleGuias'),
+    path('tours/<int:pk>', TourView.as_view())
 ]
-

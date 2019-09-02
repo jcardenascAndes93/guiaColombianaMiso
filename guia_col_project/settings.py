@@ -94,11 +94,11 @@ WSGI_APPLICATION = 'guia_col_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DB_NAME', ''),
-        'USER': os.environ.get('DB_USER', ''),
-        'PASSWORD': os.environ.get('DB_PASSWORD', ''),
-        'HOST': os.environ.get('DB_HOSTNAME', ''),
-        'PORT': os.environ.get('DB_PORT', ''),
+        'NAME': 'guia_col',
+        'USER': 'postgres',
+        'PASSWORD': 'jc1095jc',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
