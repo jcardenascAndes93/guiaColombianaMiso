@@ -11,6 +11,10 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         source='profile.last_name', allow_blank=True, required=False)
     phone = serializers.CharField(
         source='profile.phone', allow_blank=True, required=False)
+    username = serializers.CharField(
+        source='profile.username', allow_blank=True, required=False)
+    password = serializers.CharField(
+        source='profile.password', allow_blank=True, required=False)
 
     class Meta:
         model = User
