@@ -14,10 +14,8 @@ router.register(r'users', views.UserViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     # API Endpoint
-    path('auth/', ObtainAuthToken.as_view()),
+    #path('auth/', ObtainAuthToken.as_view()),
     path('api-user/', include('rest_framework.urls', namespace='rest_framework')),
-    path('modify-accounts/<int:pk>', views.modify_accounts),
-    # path(r'signup/', views.signup_view, name='signup'),
-    # path(r'login/', views.login_view, name="login"),
-    # path(r'logout/', views.logout_view, name="logout"),
+    path('auth/', views.LoginView.as_view(), name='login'),
+
 ]

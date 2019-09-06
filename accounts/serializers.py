@@ -4,17 +4,13 @@ from rest_framework import serializers
 from phone_field import PhoneField
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     first_name = serializers.CharField(
         source='profile.first_name', allow_blank=True, required=False)
     last_name = serializers.CharField(
         source='profile.last_name', allow_blank=True, required=False)
     phone = serializers.CharField(
         source='profile.phone', allow_blank=True, required=False)
-    username = serializers.CharField(
-        source='profile.username', allow_blank=True, required=False)
-    password = serializers.CharField(
-        source='profile.password', allow_blank=True, required=False)
 
     class Meta:
         model = User
