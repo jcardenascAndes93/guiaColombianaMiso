@@ -66,7 +66,7 @@ class Tour(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     guia = models.ForeignKey(Guia, on_delete=models.CASCADE)
     categories = models.ManyToManyField(Category)
-    places = models.ManyToManyField(Place)
+    places = models.ManyToManyField('Place')
 
     def __str__(self):
         return self.name
