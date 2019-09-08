@@ -40,6 +40,7 @@ class LoginView(APIView):
         if user:
             token, _ = Token.objects.get_or_create(user=user)
             return Response({'token': token.key, 'id': user.pk,
+                             'username': user.username,
                              'fname': user.profile.first_name,
                              'lname': user.profile.last_name,
                              'email': user.email,
