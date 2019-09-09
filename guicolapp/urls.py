@@ -13,4 +13,5 @@ urlpatterns = [
     path('getcategories', getCategories.as_view()),
     path('categoryfilter/<str:idCategory>', guidesByCategory.as_view()),
     path('categorycityfilter/<str:idCategory>/<str:idCity>', guidesByCategoryandCity.as_view()),
+    path('correo', views.correo),
 ]

@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator
 
+from django.contrib.auth.models import User
+from django.core.mail import send_mail
+from rest_framework.parsers import JSONParser
 from django.views.decorators.csrf import csrf_exempt
 
 from django.core import serializers
@@ -72,3 +75,20 @@ class guidesByCategoryandCity(APIView):
         guias = Guia.objects.raw(
             'select guicolapp_guia.id,guicolapp_guia.full_name from guicolapp_city,guicolapp_guia, guicolapp_tour, guicolapp_tour_categories, guicolapp_category where guicolapp_guia.id = guicolapp_tour.guia_id and guicolapp_tour.id = guicolapp_tour_categories.tour_id and guicolapp_tour_categories.category_id= guicolapp_category.id and guicolapp_guia.city_id = guicolapp_city.id and guicolapp_category.id  = ' + idCategory + ' and guicolapp_city.id = ' + idCity + '')
         return HttpResponse(serializers.serialize('json', guias))
+
+@csrf_exempt
+def correo(request):
+    data = JSONParser().parse(request)
+    user = User.objects.get(pk=data["userId"])
+    guias = Guia.objects.get(pk=data["guiaId"])
+    tour = Tour.objects.get(pk=data["tourId"])
+    email = guias.email
+    nombreTour = tour.name
+    send_mail('Informacion Tour '+tour.name,
+              'El usuario '+user.first_name+
+              ' '+user.last_name+' con email: '
+              +user.email+
+              ' desea información del tour '+tour.name,
+              'javf1016@hotmail.com',
+              [email], fail_silently=False)
+    return render(request, 'guicolapp/guias.html')

@@ -94,7 +94,6 @@ WSGI_APPLICATION = 'guia_col_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -168,3 +167,9 @@ REST_FRAMEWORK = {
 DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
 DROPBOX_OAUTH2_TOKEN = 'a2rwNxY6Q2AAAAAAAAAADMW3ndu3qYIM_gIbYn9voRx6HYo3m3jwhnsUnakGN7uj'
 DROPBOX_ROOT_PATH = 'media'
+
+EMAIL_HOST = 'smtp.live.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'javf1016@hotmail.com'
+EMAIL_HOST_PASSWORD = 'patito1016'
