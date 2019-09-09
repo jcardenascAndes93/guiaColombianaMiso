@@ -16,6 +16,8 @@ django-cors-headers = "*"
 whitenoise = "*"
 djangorestframework = "*"
 django-phone-field = "*"
+django-storages = {extras = ["dropbox"],version = "*"}
+django-dropbox-storage = "*"
 
 [requires]
 python_version = "3.7"
