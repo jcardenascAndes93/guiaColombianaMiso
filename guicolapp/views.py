@@ -10,7 +10,7 @@ from django.core import serializers
 from django.http import HttpResponse
 from psycopg2._psycopg import cursor
 
-from guicolapp.models import Guia, City, Category
+from guicolapp.models import Guia, City, Category, Place
 from .models import Tour
 
 from rest_framework.response import Response
@@ -92,3 +92,8 @@ def correo(request):
               'javf1016@hotmail.com',
               [email], fail_silently=False)
     return render(request, 'guicolapp/guias.html')
+
+class getTourPlaces(APIView):
+    def get(self, request,idTour):
+        places = Place.objects.raw('select guicolapp_tour.id from guicolapp_tour,guicolapp_tour_places,guicolapp_place where guicolapp_tour.id = guicolapp_tour_places.tour_id and guicolapp_place.id = guicolapp_tour_places.place_id and guicolapp_tour.id = ' + idTour + '')
+        return HttpResponse(serializers.serialize('json', places))

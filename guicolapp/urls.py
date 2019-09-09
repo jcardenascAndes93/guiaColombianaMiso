@@ -1,6 +1,7 @@
 from django.urls import path
 from django.conf.urls import url
-from .views import TourView, getCities, GuidesByCity, guidesByCategory, getCategories, guidesByCategoryandCity
+from .views import TourView, getCities, GuidesByCity, guidesByCategory, getCategories, guidesByCategoryandCity, \
+    getTourPlaces
 from . import views
 
 urlpatterns = [
@@ -13,5 +14,8 @@ urlpatterns = [
     path('getcategories', getCategories.as_view()),
     path('categoryfilter/<str:idCategory>', guidesByCategory.as_view()),
     path('categorycityfilter/<str:idCategory>/<str:idCity>', guidesByCategoryandCity.as_view()),
+
     path('correo', views.correo),
+
+    path('tourplaces/<str:idTour>', getTourPlaces.as_view()),
 ]
