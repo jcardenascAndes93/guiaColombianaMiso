@@ -7,7 +7,7 @@ from django.core import serializers
 from django.http import HttpResponse
 from psycopg2._psycopg import cursor
 
-from guicolapp.models import Guia, City, Category
+from guicolapp.models import Guia, City, Category, Place
 from .models import Tour
 
 from rest_framework.response import Response
@@ -72,3 +72,9 @@ class guidesByCategoryandCity(APIView):
         guias = Guia.objects.raw(
             'select guicolapp_guia.id,guicolapp_guia.full_name from guicolapp_city,guicolapp_guia, guicolapp_tour, guicolapp_tour_categories, guicolapp_category where guicolapp_guia.id = guicolapp_tour.guia_id and guicolapp_tour.id = guicolapp_tour_categories.tour_id and guicolapp_tour_categories.category_id= guicolapp_category.id and guicolapp_guia.city_id = guicolapp_city.id and guicolapp_category.id  = ' + idCategory + ' and guicolapp_city.id = ' + idCity + '')
         return HttpResponse(serializers.serialize('json', guias))
+
+
+class getTourPlaces(APIView):
+    def get(self, request,idTour):
+        places = Place.objects.raw('select guicolapp_tour.id from guicolapp_tour,guicolapp_tour_places,guicolapp_place where guicolapp_tour.id = guicolapp_tour_places.tour_id and guicolapp_place.id = guicolapp_tour_places.place_id and guicolapp_tour.id = ' + idTour + '')
+        return HttpResponse(serializers.serialize('json', places))
