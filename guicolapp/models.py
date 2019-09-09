@@ -3,6 +3,8 @@ from django.db import models
 # Create your models here.
 
 # Modelo City
+
+
 class City(models.Model):
     name = models.CharField(max_length=30)
     code = models.CharField(max_length=30)
@@ -17,7 +19,7 @@ class Guia(models.Model):
     frase = models.CharField(max_length=150)
     email = models.EmailField()
     #photo = models.ImageField(upload_to='images/guia', null=True)
-    photo = models.ImageField(upload_to='images/guia', null=True)
+    photo = models.ImageField(upload_to='guias', null=True)
     facebook = models.CharField(max_length=50)
     twitter = models.CharField(max_length=50)
     instagram = models.CharField(max_length=50)
@@ -62,7 +64,7 @@ class Tour(models.Model):
 
     name = models.CharField(max_length=30)
     #map = models.ImageField(upload_to='images/tour', null=True)
-    map = models.ImageField(upload_to='images/tour', null=True)
+    map = models.ImageField(upload_to='maps', null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     guia = models.ForeignKey(Guia, on_delete=models.CASCADE)
     categories = models.ManyToManyField(Category)

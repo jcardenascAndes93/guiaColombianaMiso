@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'phone_field',
+    'storages',
 
 ]
 
@@ -142,11 +143,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_URL = '/images/'
 STATIC_ROOT = 'staticfiles'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'images'),
-)
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'images'),
+# )
+
 
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -162,3 +163,8 @@ REST_FRAMEWORK = {
     )
 
 }
+
+# DROPBOX SETTINGS
+DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+DROPBOX_OAUTH2_TOKEN = 'a2rwNxY6Q2AAAAAAAAAADMW3ndu3qYIM_gIbYn9voRx6HYo3m3jwhnsUnakGN7uj'
+DROPBOX_ROOT_PATH = 'media'
