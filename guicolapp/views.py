@@ -78,3 +78,9 @@ class getTourPlaces(APIView):
     def get(self, request,idTour):
         places = Place.objects.raw('select guicolapp_tour.id from guicolapp_tour,guicolapp_tour_places,guicolapp_place where guicolapp_tour.id = guicolapp_tour_places.tour_id and guicolapp_place.id = guicolapp_tour_places.place_id and guicolapp_tour.id = ' + idTour + '')
         return HttpResponse(serializers.serialize('json', places))
+
+
+class getCategoriesbyGuia(APIView):
+    def get(self, request,idGuia):
+        categories = Category.objects.raw('select guicolapp_category.id,guicolapp_category.name from guicolapp_city,guicolapp_guia, guicolapp_tour, guicolapp_tour_categories, guicolapp_category where guicolapp_guia.id = guicolapp_tour.guia_id and guicolapp_tour.id = guicolapp_tour_categories.tour_id and guicolapp_tour_categories.category_id= guicolapp_category.id and guicolapp_guia.city_id = guicolapp_city.id and guicolapp_guia.id = ' + idGuia + ' group by guicolapp_category.id,guicolapp_category.name')
+        return HttpResponse(serializers.serialize('json', categories))
