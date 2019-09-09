@@ -53,6 +53,7 @@ class getCities(APIView):
         cities = City.objects.all()
         return HttpResponse(serializers.serialize('json', cities))
 
+
 class getCategories(APIView):
     def get(self, request):
         categories = Category.objects.all()
@@ -61,5 +62,13 @@ class getCategories(APIView):
 
 class guidesByCategory(APIView):
     def get(self, request, idCategory):
-        guias = Guia.objects.raw('select guicolapp_guia.id,guicolapp_guia.full_name from guicolapp_guia, guicolapp_tour, guicolapp_tour_categories, guicolapp_category where guicolapp_guia.id = guicolapp_tour.guia_id and guicolapp_tour.id = guicolapp_tour_categories.tour_id and guicolapp_tour_categories.category_id= guicolapp_category.id and guicolapp_category.id = '+idCategory+' group by guicolapp_guia.id,guicolapp_guia.full_name')
+        guias = Guia.objects.raw(
+            'select guicolapp_guia.id,guicolapp_guia.full_name from guicolapp_guia, guicolapp_tour, guicolapp_tour_categories, guicolapp_category where guicolapp_guia.id = guicolapp_tour.guia_id and guicolapp_tour.id = guicolapp_tour_categories.tour_id and guicolapp_tour_categories.category_id= guicolapp_category.id and guicolapp_category.id = ' + idCategory + '')
+        return HttpResponse(serializers.serialize('json', guias))
+
+
+class guidesByCategoryandCity(APIView):
+    def get(self, request, idCategory, idCity):
+        guias = Guia.objects.raw(
+            'select guicolapp_guia.id,guicolapp_guia.full_name from guicolapp_city,guicolapp_guia, guicolapp_tour, guicolapp_tour_categories, guicolapp_category where guicolapp_guia.id = guicolapp_tour.guia_id and guicolapp_tour.id = guicolapp_tour_categories.tour_id and guicolapp_tour_categories.category_id= guicolapp_category.id and guicolapp_guia.city_id = guicolapp_city.id and guicolapp_category.id  = ' + idCategory + ' and guicolapp_city.id = ' + idCity + '')
         return HttpResponse(serializers.serialize('json', guias))
